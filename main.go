@@ -77,8 +77,8 @@ func draw() {
 	p1.draw()
 	p2.draw()
 	rl.DrawLine(screen_width/2, 0, screen_width/2, screen_height, rl.White)
-	rl.DrawText(fmt.Sprint(cpu_score), (screen_width/3)+50, 20, 80, rl.White)
-	rl.DrawText(fmt.Sprint(player_score), (screen_width/2)+50, 20, 80, rl.White)
+	rl.DrawText(fmt.Sprint(cpu_score), (screen_width/4)-20, 20, 80, rl.White)
+	rl.DrawText(fmt.Sprint(player_score), 3*(screen_width/4)-20, 20, 80, rl.White)
 
 	rl.EndDrawing()
 }
