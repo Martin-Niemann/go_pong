@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
@@ -14,6 +16,9 @@ const circle_radius = 20
 var ball Ball
 var p1 Paddle
 var p2 CPU
+
+var player_score = 0
+var cpu_score = 0
 
 func main() {
 	rl.InitWindow(screen_width, screen_height, "Pung")
@@ -36,6 +41,7 @@ func initialize_gameobjects() {
 		speed_y: 7,
 		radius:  circle_radius,
 	}
+	random_direction(&ball)
 
 	p1 = Paddle{
 		x:      screen_width - (paddle_edge_padding + paddle_width),
@@ -59,14 +65,8 @@ func update() {
 	p1.update()
 	p2.update(&ball)
 
-	check_collissions(&p1)
-	check_collissions(&p2.paddle)
-}
-
-func check_collissions(p *Paddle) {
-	if rl.CheckCollisionCircleRec(rl.Vector2{X: float32(ball.x), Y: float32(ball.y)}, float32(ball.radius), rl.Rectangle{X: float32(p.x), Y: float32(p.y), Width: float32(p.width), Height: float32(p.height)}) {
-		ball.speed_x *= -1
-	}
+	ball.check_collission(&p1)
+	ball.check_collission(&p2.paddle)
 }
 
 func draw() {
@@ -77,6 +77,8 @@ func draw() {
 	p1.draw()
 	p2.draw()
 	rl.DrawLine(screen_width/2, 0, screen_width/2, screen_height, rl.White)
+	rl.DrawText(fmt.Sprint(cpu_score), (screen_width/3)+50, 20, 80, rl.White)
+	rl.DrawText(fmt.Sprint(player_score), (screen_width/2)+50, 20, 80, rl.White)
 
 	rl.EndDrawing()
 }
