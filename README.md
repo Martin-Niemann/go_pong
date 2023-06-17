@@ -20,4 +20,4 @@ Build on Arch Linux
 ### Issues
 It is possible to control the CPU paddle together with the player paddle by calling `p2.paddle.update()` instead of `p2.update(&ball)` in the `main.go` `update()` function. 
 
-There seems to be no good way to override methods OOP style. See [Golang Method Override](https://stackoverflow.com/questions/38123911/golang-method-override) on Stack Overflow.
+There seems to be no good way in Go to override methods OOP style. See [Golang Method Override](https://stackoverflow.com/questions/38123911/golang-method-override) on Stack Overflow.
