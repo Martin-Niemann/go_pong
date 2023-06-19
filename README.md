@@ -1,8 +1,8 @@
-## PONG clone written in Go using [raylib-go](https://github.com/gen2brain/raylib-go). 
+## Raylib PONG clone ported to Go with [raylib-go](https://github.com/gen2brain/raylib-go). 
 
 #### Based on [this video tutorial](https://www.youtube.com/watch?v=VLJlTaFvHo4).
 
-Special attention has been paid to make the code as readable as possible through seperation of concerns and avoidance of code reuse.
+Special attention has been paid to make the code as readable as possible through separation of concerns and avoidance of code reuse.
 
 ### How to play
 Move the left paddle with the `up` and `down` keyboard arrows.
