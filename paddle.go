@@ -5,19 +5,20 @@ import (
 )
 
 type Paddle struct {
-	x, y, width, height, speed int32
+	side                       byte
+	x, y, width, height, speed float32
 }
 
 func (p *Paddle) draw() {
-	rl.DrawRectangle(p.x, p.y, p.width, p.height, rl.White)
+	rl.DrawRectangle(int32(p.x), int32(p.y), int32(p.width), int32(p.height), rl.White)
 }
 
 func (p *Paddle) update() {
 	if rl.IsKeyDown(rl.KeyUp) {
-		p.y -= p.speed
+		p.y -= p.speed * delta
 	}
 	if rl.IsKeyDown(rl.KeyDown) {
-		p.y += p.speed
+		p.y += p.speed * delta
 	}
 
 	p.limit_movement()
