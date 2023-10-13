@@ -1,6 +1,6 @@
 ## Raylib PONG clone ported to Go with [raylib-go](https://github.com/gen2brain/raylib-go). 
 
-#### Based on [this video tutorial](https://www.youtube.com/watch?v=VLJlTaFvHo4).
+#### Based on [this](https://www.youtube.com/watch?v=VLJlTaFvHo4) and [this](https://www.youtube.com/watch?v=LvpS3ILwQNA) video tutorial.
 
 Special attention has been paid to make the code as readable as possible through separation of concerns and avoidance of code reuse.
 
