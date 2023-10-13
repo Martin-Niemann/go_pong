@@ -16,8 +16,16 @@ func (b *Ball) update() {
 	b.x += b.speed_x * delta
 	b.y += b.speed_y * delta
 
-	if b.y+b.radius >= screen_height || b.y-b.radius <= 0 {
-		b.speed_y *= -1
+	if b.y+b.radius >= screen_height {
+		if b.speed_y > 0 {
+			b.speed_y *= -1
+		}
+	}
+
+	if b.y-b.radius <= 0 {
+		if b.speed_y < 0 {
+			b.speed_y *= -1
+		}
 	}
 
 	if b.x+b.radius >= screen_width {
