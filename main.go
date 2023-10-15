@@ -12,7 +12,7 @@ const paddle_height = 120
 const paddle_width = 10
 const paddle_edge_padding = 60
 const circle_radius = 6
-const ball_speed = 300
+const ball_speed = 500
 const paddle_speed = 300
 
 var delta float32 = 1
@@ -38,11 +38,12 @@ func main() {
 
 func initialize_gameobjects() {
 	ball = Ball{
-		x:       screen_width / 2,
-		y:       screen_height / 2,
-		speed_x: ball_speed,
-		speed_y: ball_speed,
-		radius:  circle_radius,
+		x:               screen_width / 2,
+		y:               screen_height / 2,
+		speed_x:         ball_speed,
+		speed_y:         ball_speed,
+		radius:          circle_radius,
+		temp_ball_speed: ball_speed,
 	}
 	random_direction(&ball)
 

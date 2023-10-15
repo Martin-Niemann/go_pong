@@ -1,11 +1,13 @@
 package main
 
 import (
+	"math"
+
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
 
 type Ball struct {
-	x, y, radius, speed_x, speed_y float32
+	x, y, radius, speed_x, speed_y, temp_ball_speed float32
 }
 
 func (b *Ball) draw() {
@@ -50,22 +52,27 @@ func (b *Ball) check_collission(p *Paddle) {
 		Height: p.height}
 
 	if rl.CheckCollisionCircleRec(ball_vector, ball.radius, paddle_rectangle) {
+		b.temp_ball_speed *= 1.1
+
+		// logic taken from this stackexchange post by Ricket: https://gamedev.stackexchange.com/a/4255
+		var relative_intersect_y = (p.y + (p.height / 2)) - b.y
+		var normalized_relative_intersect_y = relative_intersect_y / (p.height / 2)
+		var bounce_angle = normalized_relative_intersect_y * (5 * math.Pi / 16)
+
+		// multiply by 1.5 so the speed of the ball after the first paddle hit matches the ball's initial speed
+		b.speed_y = b.temp_ball_speed * 1.5 * -float32(math.Sin(float64(bounce_angle)))
+
 		if p.side == 0 {
-			if b.speed_x > 0 {
-				b.speed_x *= -1.1
-				b.speed_y = (b.y - p.y) / (p.height / 2) * -b.speed_x
-			}
+			b.speed_x = b.temp_ball_speed * 1.5 * -float32(math.Cos(float64(bounce_angle)))
 		}
 		if p.side == 1 {
-			if b.speed_x < 0 {
-				b.speed_x *= -1.1
-				b.speed_y = (b.y - p.y) / (p.height / 2) * b.speed_x
-			}
+			b.speed_x = b.temp_ball_speed * 1.5 * float32(math.Cos(float64(bounce_angle)))
 		}
 	}
 }
 
 func reset_ball(ball *Ball) {
+	ball.temp_ball_speed = ball_speed
 	ball.speed_x = ball_speed
 	ball.speed_y = ball_speed
 	ball.x = screen_width / 2
