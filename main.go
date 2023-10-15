@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math"
 
 	rl "github.com/gen2brain/raylib-go/raylib"
 )
@@ -13,7 +14,8 @@ const paddle_width = 10
 const paddle_edge_padding = 60
 const circle_radius = 6
 const ball_speed = 500
-const paddle_speed = 300
+const max_bounce_angle = 5 * math.Pi / 16
+const paddle_speed = 800
 
 var delta float32 = 1
 var ball Ball

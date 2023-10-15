@@ -57,7 +57,7 @@ func (b *Ball) check_collission(p *Paddle) {
 		// logic taken from this stackexchange post by Ricket: https://gamedev.stackexchange.com/a/4255
 		var relative_intersect_y = (p.y + (p.height / 2)) - b.y
 		var normalized_relative_intersect_y = relative_intersect_y / (p.height / 2)
-		var bounce_angle = normalized_relative_intersect_y * (5 * math.Pi / 16)
+		var bounce_angle = normalized_relative_intersect_y * max_bounce_angle
 
 		// multiply by 1.5 so the speed of the ball after the first paddle hit matches the ball's initial speed
 		b.speed_y = b.temp_ball_speed * 1.5 * -float32(math.Sin(float64(bounce_angle)))
