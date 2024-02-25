@@ -51,7 +51,7 @@ func (b *Ball) check_collission(p *Paddle) {
 		Width:  p.width,
 		Height: p.height}
 
-	if rl.CheckCollisionCircleRec(ball_vector, ball.radius, paddle_rectangle) {
+	if rl.CheckCollisionCircleRec(ball_vector, b.radius, paddle_rectangle) {
 		b.temp_ball_speed *= 1.1
 
 		// logic taken from this stackexchange post by Ricket: https://gamedev.stackexchange.com/a/4255
