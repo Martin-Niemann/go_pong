@@ -1,8 +1,6 @@
-## Raylib PONG clone ported to Go with [raylib-go](https://github.com/gen2brain/raylib-go), with in-progress P2P LAN UDP network multiplayer.
+## Raylib PONG clone ported to Go with [raylib-go](https://github.com/gen2brain/raylib-go), with in-progress P2P LAN UDP multiplayer.
 
 #### PONG game based on [this](https://www.youtube.com/watch?v=VLJlTaFvHo4) and [this](https://www.youtube.com/watch?v=LvpS3ILwQNA) video tutorial.
-
-Special attention has been paid to make the code as readable as possible through separation of concerns and avoidance of code reuse.
 
 Network code written by me by reading the Golang documentation and using my google-fu.
 
